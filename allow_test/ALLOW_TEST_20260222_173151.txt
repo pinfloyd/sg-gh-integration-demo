@@ -1,0 +1,3 @@
+ALLOW_TEST
+ts=20260222_173151
+note=harmless_added_lines_for_ci_positive_path
