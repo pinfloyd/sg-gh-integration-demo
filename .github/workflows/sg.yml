@@ -1,0 +1,50 @@
+name: Secrets Guard Integration
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  sg-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare Intent
+        run: |
+          echo '{
+            "intent": {
+              "action_type": "GIT_COMMIT_DIFF",
+              "payload": {
+                "repo": "${{ github.repository }}",
+                "ref": "${{ github.ref }}",
+                "commit": "${{ github.sha }}",
+                "diff_facts": [
+                  {
+                    "path": "README.md",
+                    "line": 1,
+                    "added": "OPENAI_SECRET_KEY=abc"
+                  }
+                ]
+              }
+            }
+          }' > intent.json
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Call Authority
+        run: |
+          curl -s -X POST http://107.172.34.21:8787/admit \
+            -H "Content-Type: application/json" \
+            --data-binary @intent.json > response.json
+
+          cat response.json
+
+          decision=$(jq -r '.decision' response.json)
+
+          if [ "$decision" = "DENY" ]; then
+            echo "Blocked by Authority"
+            exit 1
+          fi
