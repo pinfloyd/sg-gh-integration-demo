@@ -1,0 +1,6 @@
+RUN_ID=22274938750
+HEAD_SHA=ece8777e8fc3175c2aafe470a35418de109a68c7
+CONCLUSION=failure
+TITLE=WEEK1_STEP5: real diff-only extraction (added lines) + docs
+URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274938750
+CREATED_AT=02/22/2026 09:58:53

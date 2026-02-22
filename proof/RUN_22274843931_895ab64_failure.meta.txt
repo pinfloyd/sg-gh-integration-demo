@@ -1,0 +1,6 @@
+RUN_ID=22274843931
+HEAD_SHA=895ab644728ef6fd507c3f1f1fca2945aa724245
+CONCLUSION=failure
+TITLE=Fix enforcement: read signed_record.decision
+URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274843931
+CREATED_AT=02/22/2026 09:52:12

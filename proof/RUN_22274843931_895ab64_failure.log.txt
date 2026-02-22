@@ -1,0 +1,208 @@
+sg-check	Set up job	﻿2026-02-22T09:52:15.1628133Z Current runner version: '2.331.0'
+sg-check	Set up job	2026-02-22T09:52:15.1661947Z ##[group]Runner Image Provisioner
+sg-check	Set up job	2026-02-22T09:52:15.1663178Z Hosted Compute Agent
+sg-check	Set up job	2026-02-22T09:52:15.1664057Z Version: 20260123.484
+sg-check	Set up job	2026-02-22T09:52:15.1664980Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+sg-check	Set up job	2026-02-22T09:52:15.1666130Z Build Date: 2026-01-23T19:41:17Z
+sg-check	Set up job	2026-02-22T09:52:15.1667187Z Worker ID: {d4c10ca5-b45a-4fec-88cd-71567c87d53c}
+sg-check	Set up job	2026-02-22T09:52:15.1668284Z Azure Region: eastus
+sg-check	Set up job	2026-02-22T09:52:15.1669209Z ##[endgroup]
+sg-check	Set up job	2026-02-22T09:52:15.1671401Z ##[group]Operating System
+sg-check	Set up job	2026-02-22T09:52:15.1672549Z Ubuntu
+sg-check	Set up job	2026-02-22T09:52:15.1673325Z 24.04.3
+sg-check	Set up job	2026-02-22T09:52:15.1674068Z LTS
+sg-check	Set up job	2026-02-22T09:52:15.1674895Z ##[endgroup]
+sg-check	Set up job	2026-02-22T09:52:15.1675657Z ##[group]Runner Image
+sg-check	Set up job	2026-02-22T09:52:15.1676493Z Image: ubuntu-24.04
+sg-check	Set up job	2026-02-22T09:52:15.1677246Z Version: 20260201.15.1
+sg-check	Set up job	2026-02-22T09:52:15.1679044Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+sg-check	Set up job	2026-02-22T09:52:15.1681989Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+sg-check	Set up job	2026-02-22T09:52:15.1683563Z ##[endgroup]
+sg-check	Set up job	2026-02-22T09:52:15.1685189Z ##[group]GITHUB_TOKEN Permissions
+sg-check	Set up job	2026-02-22T09:52:15.1687695Z Contents: read
+sg-check	Set up job	2026-02-22T09:52:15.1688536Z Metadata: read
+sg-check	Set up job	2026-02-22T09:52:15.1689356Z Packages: read
+sg-check	Set up job	2026-02-22T09:52:15.1690280Z ##[endgroup]
+sg-check	Set up job	2026-02-22T09:52:15.1693130Z Secret source: Actions
+sg-check	Set up job	2026-02-22T09:52:15.1694323Z Prepare workflow directory
+sg-check	Set up job	2026-02-22T09:52:15.2011662Z Prepare all required actions
+sg-check	Set up job	2026-02-22T09:52:15.2048480Z Getting action download info
+sg-check	Set up job	2026-02-22T09:52:15.4099489Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+sg-check	Set up job	2026-02-22T09:52:15.6112516Z Complete job name: sg-check
+sg-check	Run actions/checkout@v4	﻿2026-02-22T09:52:15.6932760Z ##[group]Run actions/checkout@v4
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6933618Z with:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6934065Z   repository: pinfloyd/sg-gh-integration-demo
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6934766Z   token: ***
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6935166Z   ssh-strict: true
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6935543Z   ssh-user: git
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6935927Z   persist-credentials: true
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6936349Z   clean: true
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6936739Z   sparse-checkout-cone-mode: true
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6937205Z   fetch-depth: 1
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6937576Z   fetch-tags: false
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6937961Z   show-progress: true
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6938361Z   lfs: false
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6938713Z   submodules: false
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6939112Z   set-safe-directory: true
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.6939735Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.7991876Z Syncing repository: pinfloyd/sg-gh-integration-demo
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.7993858Z ##[group]Getting Git version info
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.7994725Z Working directory is '/home/runner/work/sg-gh-integration-demo/sg-gh-integration-demo'
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.7995977Z [command]/usr/bin/git version
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8073413Z git version 2.52.0
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8099502Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8115588Z Temporarily overriding HOME='/home/runner/work/_temp/c296acb1-0e29-4bfc-8e1e-ef1389dff0f1' before making global git config changes
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8118014Z Adding repository directory to the temporary git global config as a safe directory
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8129445Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sg-gh-integration-demo/sg-gh-integration-demo
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8167012Z Deleting the contents of '/home/runner/work/sg-gh-integration-demo/sg-gh-integration-demo'
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8170292Z ##[group]Initializing the repository
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8174494Z [command]/usr/bin/git init /home/runner/work/sg-gh-integration-demo/sg-gh-integration-demo
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8269929Z hint: Using 'master' as the name for the initial branch. This default branch name
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8271652Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8272956Z hint: to use in all of your new repositories, which will suppress this warning,
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8274295Z hint: call:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8274861Z hint:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8275764Z hint: 	git config --global init.defaultBranch <name>
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8276675Z hint:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8277364Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8278263Z hint: 'development'. The just-created branch can be renamed via this command:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8279138Z hint:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8279736Z hint: 	git branch -m <name>
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8280415Z hint:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8281339Z hint: Disable this message with "git config set advice.defaultBranchName false"
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8283127Z Initialized empty Git repository in /home/runner/work/sg-gh-integration-demo/sg-gh-integration-demo/.git/
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8285405Z [command]/usr/bin/git remote add origin https://github.com/pinfloyd/sg-gh-integration-demo
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8318170Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8318887Z ##[group]Disabling automatic garbage collection
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8322531Z [command]/usr/bin/git config --local gc.auto 0
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8349139Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8349779Z ##[group]Setting up auth
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8356980Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8386959Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8729087Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8758318Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.8975658Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.9006892Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.9235247Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.9269712Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.9270438Z ##[group]Fetching the repository
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:15.9277998Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +895ab644728ef6fd507c3f1f1fca2945aa724245:refs/remotes/origin/main
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.0970813Z From https://github.com/pinfloyd/sg-gh-integration-demo
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.0972350Z  * [new ref]         895ab644728ef6fd507c3f1f1fca2945aa724245 -> origin/main
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1004264Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1005525Z ##[group]Determining the checkout info
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1007245Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1011223Z [command]/usr/bin/git sparse-checkout disable
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1052016Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1079584Z ##[group]Checking out the ref
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1084484Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1128598Z Switched to a new branch 'main'
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1132077Z branch 'main' set up to track 'origin/main'.
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1139641Z ##[endgroup]
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1174744Z [command]/usr/bin/git log -1 --format=%H
+sg-check	Run actions/checkout@v4	2026-02-22T09:52:16.1196356Z 895ab644728ef6fd507c3f1f1fca2945aa724245
+sg-check	Prepare Intent	﻿2026-02-22T09:52:16.1431585Z ##[group]Run echo '{
+sg-check	Prepare Intent	2026-02-22T09:52:16.1432366Z [36;1mecho '{[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1432856Z [36;1m  "intent": {[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1433518Z [36;1m    "action_type": "GIT_COMMIT_DIFF",[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1434372Z [36;1m    "payload": {[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1435168Z [36;1m      "repo": "pinfloyd/sg-gh-integration-demo",[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1436152Z [36;1m      "ref": "refs/heads/main",[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1437197Z [36;1m      "commit": "895ab644728ef6fd507c3f1f1fca2945aa724245",[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1438656Z [36;1m      "diff_facts": [[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1439287Z [36;1m        {[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1439809Z [36;1m          "path": "README.md",[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1440547Z [36;1m          "line": 1,[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1441252Z [36;1m          "added": "OPENAI_SECRET_KEY=abc"[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1442235Z [36;1m        }[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1442711Z [36;1m      ][0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1443160Z [36;1m    }[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1443611Z [36;1m  }[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1444102Z [36;1m}' > intent.json[0m
+sg-check	Prepare Intent	2026-02-22T09:52:16.1480998Z shell: /usr/bin/bash -e {0}
+sg-check	Prepare Intent	2026-02-22T09:52:16.1481995Z ##[endgroup]
+sg-check	Install jq	﻿2026-02-22T09:52:16.1611775Z ##[group]Run sudo apt-get update && sudo apt-get install -y jq
+sg-check	Install jq	2026-02-22T09:52:16.1613107Z [36;1msudo apt-get update && sudo apt-get install -y jq[0m
+sg-check	Install jq	2026-02-22T09:52:16.1643323Z shell: /usr/bin/bash -e {0}
+sg-check	Install jq	2026-02-22T09:52:16.1643984Z ##[endgroup]
+sg-check	Install jq	2026-02-22T09:52:16.2937111Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+sg-check	Install jq	2026-02-22T09:52:16.3324708Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+sg-check	Install jq	2026-02-22T09:52:16.3328123Z Get:6 https://packages.microsoft.com/repos/azure-cli noble InRelease [3564 B]
+sg-check	Install jq	2026-02-22T09:52:16.3332854Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+sg-check	Install jq	2026-02-22T09:52:16.3349939Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+sg-check	Install jq	2026-02-22T09:52:16.3383811Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+sg-check	Install jq	2026-02-22T09:52:16.3423190Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+sg-check	Install jq	2026-02-22T09:52:16.4868640Z Get:8 https://packages.microsoft.com/repos/azure-cli noble/main amd64 Packages [2129 B]
+sg-check	Install jq	2026-02-22T09:52:16.5353048Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main all Packages [643 B]
+sg-check	Install jq	2026-02-22T09:52:16.5387677Z Get:10 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [11.4 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5494196Z Get:11 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [93.3 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5553426Z Get:12 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [72.7 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5840579Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1771 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5929669Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [328 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5963322Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5971025Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [16.5 kB]
+sg-check	Install jq	2026-02-22T09:52:16.5990184Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1557 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6080275Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [316 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6105134Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6139365Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [32.6 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6153454Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2663 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6285363Z Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [613 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6781145Z Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+sg-check	Install jq	2026-02-22T09:52:16.6786946Z Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [32.1 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6799340Z Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [7044 B]
+sg-check	Install jq	2026-02-22T09:52:16.6817678Z Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+sg-check	Install jq	2026-02-22T09:52:16.6829741Z Get:27 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7280 B]
+sg-check	Install jq	2026-02-22T09:52:16.6842960Z Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+sg-check	Install jq	2026-02-22T09:52:16.6856222Z Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+sg-check	Install jq	2026-02-22T09:52:16.6869199Z Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+sg-check	Install jq	2026-02-22T09:52:16.7031615Z Get:31 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1474 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7141077Z Get:32 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [237 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7151049Z Get:33 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7172514Z Get:34 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [9892 B]
+sg-check	Install jq	2026-02-22T09:52:16.7193016Z Get:35 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [935 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7268639Z Get:36 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [214 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7702579Z Get:37 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7717862Z Get:38 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [20.0 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7730760Z Get:39 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2516 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7871358Z Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [582 kB]
+sg-check	Install jq	2026-02-22T09:52:16.7907738Z Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+sg-check	Install jq	2026-02-22T09:52:16.7918061Z Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [212 B]
+sg-check	Install jq	2026-02-22T09:52:25.9973683Z Fetched 14.6 MB in 2s (8324 kB/s)
+sg-check	Install jq	2026-02-22T09:52:26.8186865Z Reading package lists...
+sg-check	Install jq	2026-02-22T09:52:26.8517031Z Reading package lists...
+sg-check	Install jq	2026-02-22T09:52:27.0557785Z Building dependency tree...
+sg-check	Install jq	2026-02-22T09:52:27.0565717Z Reading state information...
+sg-check	Install jq	2026-02-22T09:52:27.2444517Z jq is already the newest version (1.7.1-3ubuntu0.24.04.1).
+sg-check	Install jq	2026-02-22T09:52:27.2445436Z 0 upgraded, 0 newly installed, 0 to remove and 164 not upgraded.
+sg-check	Call Authority	﻿2026-02-22T09:52:27.2498086Z ##[group]Run curl -s -X POST http://107.172.34.21:8787/admit \
+sg-check	Call Authority	2026-02-22T09:52:27.2498594Z [36;1mcurl -s -X POST http://107.172.34.21:8787/admit \[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2499009Z [36;1m  -H "Content-Type: application/json" \[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2499335Z [36;1m  --data-binary @intent.json > response.json[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2499608Z [36;1m[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2499775Z [36;1mcat response.json[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2499973Z [36;1m[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2500233Z [36;1mdecision=$(jq -r '.signed_record.decision' response.json)[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2500581Z [36;1m[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2500759Z [36;1mif [ "$decision" = "DENY" ]; then[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2501027Z [36;1m  echo "Blocked by Authority"[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2501260Z [36;1m  exit 1[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2501647Z [36;1mfi[0m
+sg-check	Call Authority	2026-02-22T09:52:27.2534113Z shell: /usr/bin/bash -e {0}
+sg-check	Call Authority	2026-02-22T09:52:27.2534359Z ##[endgroup]
+sg-check	Call Authority	2026-02-22T09:52:27.3238752Z {"signed_record":{"intent":{"action_type":"GIT_COMMIT_DIFF","payload":{"repo":"pinfloyd/sg-gh-integration-demo","ref":"refs/heads/main","commit":"895ab644728ef6fd507c3f1f1fca2945aa724245","diff_facts":[{"path":"README.md","line":1,"added":"OPENAI_SECRET_KEY=abc"}]}},"decision":"DENY","policy_version":"v1","authority_id":"ADMIT_AUTHORITY_V1","image_digest":"sha256:6bb6709ebe520ff798cc08b8035d1e2acca71a9b0eeda0edeba16e7eb6f8bdf8","timestamp_utc":"2026-02-22T09:52:27Z","seq":10,"prev_hash":"0517dbaca5017a3c9f46062d317abb7bc923df4924bfdb926e8962002af48457","decision_hash":"eb2a692d41bd792df64a361ea169d3cb53ea457cef23cf02d937426ce329e8bf","record_hash":"ed9b95359d8a9ed5139df3ec4cf41b8ac2acfd785b0868dc2e1fc4f300478e5e","signature":"NKguzSpHu92Xk17IuN2ToSIaoiWclNU4RZ7D9nkdbExxWIFwHjIhTP1FIGSPLhDKjLGuoWQ01Ytjd9vnywc+Ag=="},"ledger_new_hash":"0f8dda9ec46030bc0d6dd938b8ff0fe951b441d64b57b37644ff91373d371842"}Blocked by Authority
+sg-check	Call Authority	2026-02-22T09:52:27.3252805Z ##[error]Process completed with exit code 1.
+sg-check	Post Run actions/checkout@v4	﻿2026-02-22T09:52:27.3357715Z Post job cleanup.
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4289532Z [command]/usr/bin/git version
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4325303Z git version 2.52.0
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4366914Z Temporarily overriding HOME='/home/runner/work/_temp/87a1086c-6bcc-4ab4-81a1-ce13aa66cd74' before making global git config changes
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4368267Z Adding repository directory to the temporary git global config as a safe directory
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4372544Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/sg-gh-integration-demo/sg-gh-integration-demo
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4406532Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4437857Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4680632Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4762383Z http.https://github.com/.extraheader
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4764036Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4766137Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.4982751Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+sg-check	Post Run actions/checkout@v4	2026-02-22T09:52:27.5014389Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+sg-check	Complete job	﻿2026-02-22T09:52:27.5345038Z Cleaning up orphan processes

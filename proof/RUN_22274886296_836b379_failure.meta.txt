@@ -1,0 +1,6 @@
+RUN_ID=22274886296
+HEAD_SHA=836b379982c6345e469ec7298406c1209f6a0154
+CONCLUSION=failure
+TITLE=Docs: 5-minute install runbook (WEEK1_STEP4)
+URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274886296
+CREATED_AT=02/22/2026 09:55:12

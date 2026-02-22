@@ -32,14 +32,7 @@ jobs:
 
           git diff --unified=0 "$BASE" "$COMMIT" > diff.patch
 
-          python3 -c 'import json,re,os; repo=os.environ.get("REPO",""); ref=os.environ.get("REF",""); commit=os.environ.get("COMMIT",""); data=open("diff.patch","r",encoding="utf-8",errors="replace").read().splitlines(); diff=[]; path=None; line=None; h=re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@"); 
-for s in data:
-  if s.startswith("+++ b/"): path=s[6:].strip(); line=None; continue
-  m=h.match(s)
-  if m: line=int(m.group(1)); continue
-  if path and line is not None and s.startswith("+") and not s.startswith("+++"): diff.append({"path":path,"line":line,"added":s[1:]}); line+=1
-intent={"intent":{"action_type":"GIT_COMMIT_DIFF","payload":{"repo":repo,"ref":ref,"commit":commit,"diff_facts":diff}}}; 
-json.dump(intent,open("intent.json","w",encoding="utf-8"),ensure_ascii=False,separators=(",",":"))'
+          python3 -c "import json,re,os;repo=os.environ.get('REPO','');ref=os.environ.get('REF','');commit=os.environ.get('COMMIT','');data=open('diff.patch','r',encoding='utf-8',errors='replace').read().splitlines();diff=[];path=None;line=None;h=re.compile(r'^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@');[ (lambda s: (diff.append({'path':path,'line':line,'added':s[1:]}) or None) if (path and line is not None and s.startswith('+') and not s.startswith('+++')) else None)(s) if not ( (s.startswith('+++ b/') and (path:=s[6:].strip()) is None) or ( (m:=h.match(s)) and (line:=int(m.group(1))) is not None) ) else None for s in data ];json.dump({'intent':{'action_type':'GIT_COMMIT_DIFF','payload':{'repo':repo,'ref':ref,'commit':commit,'diff_facts':diff}}},open('intent.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))"
 
           echo "DIFF_FACTS_COUNT=$(jq '.intent.payload.diff_facts | length' intent.json)"
 

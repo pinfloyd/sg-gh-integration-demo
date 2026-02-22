@@ -1,0 +1,10 @@
+=== RUN LIST (last 5) ===
+
+[{"conclusion":"failure","createdAt":"2026-02-22T10:00:44Z","databaseId":22274965388,"displayTitle":"WEEK1_STEP6: proof trigger commit (secret-like string)","headSha":"589f8741a2155734bef8f1dcaa28c866d95a3563","url":"https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274965388"},{"conclusion":"failure","createdAt":"2026-02-22T09:58:53Z","databaseId":22274938750,"displayTitle":"WEEK1_STEP5: real diff-only extraction (added lines) + docs","headSha":"ece8777e8fc3175c2aafe470a35418de109a68c7","url":"https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274938750"},{"conclusion":"failure","createdAt":"2026-02-22T09:55:12Z","databaseId":22274886296,"displayTitle":"Docs: 5-minute install runbook (WEEK1_STEP4)","headSha":"836b379982c6345e469ec7298406c1209f6a0154","url":"https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274886296"},{"conclusion":"failure","createdAt":"2026-02-22T09:52:12Z","databaseId":22274843931,"displayTitle":"Fix enforcement: read signed_record.decision","headSha":"895ab644728ef6fd507c3f1f1fca2945aa724245","url":"https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274843931"},{"conclusion":"success","createdAt":"2026-02-22T09:49:41Z","databaseId":22274806726,"displayTitle":"Fix workflow YAML (correct literal interpolation)","headSha":"7926468768f95ee3ce166c9669f4f58bf7f5ba5f","url":"https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274806726"}]
+=== DOWNLOADING LOGS (newest 4) ===
+
+
+RUN_ID=22274965388 CONCLUSION=failure URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274965388
+RUN_ID=22274938750 CONCLUSION=failure URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274938750
+RUN_ID=22274886296 CONCLUSION=failure URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274886296
+RUN_ID=22274843931 CONCLUSION=failure URL=https://github.com/pinfloyd/sg-gh-integration-demo/actions/runs/22274843931
