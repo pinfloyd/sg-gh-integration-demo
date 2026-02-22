@@ -13,9 +13,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
       - name: Build Intent (real added-lines diff-only)
         env:
-          AUTHORITY_URL: http://107.172.34.21:8787
           REPO: ${{ github.repository }}
           REF: ${{ github.ref }}
           COMMIT: ${{ github.sha }}
@@ -30,56 +32,18 @@ jobs:
 
           git diff --unified=0 "$BASE" "$COMMIT" > diff.patch
 
-          cat > build_intent.py <<EOF
-import json, re, os
-
-repo   = os.environ.get("REPO","")
-ref    = os.environ.get("REF","")
-commit = os.environ.get("COMMIT","")
-
-data = open("diff.patch","r",encoding="utf-8",errors="replace").read().splitlines()
-
-diff_facts = []
-cur_path = None
-cur_line = None
-hunk_re = re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@")
-
-for line in data:
-    if line.startswith("+++ b/"):
-        cur_path = line[6:].strip()
-        cur_line = None
-        continue
-    m = hunk_re.match(line)
-    if m:
-        cur_line = int(m.group(1))
-        continue
-    if line.startswith("+") and not line.startswith("+++") and cur_path and cur_line is not None:
-        diff_facts.append({"path":cur_path,"line":cur_line,"added":line[1:]})
-        cur_line += 1
-
-intent = {
-  "intent":{
-    "action_type":"GIT_COMMIT_DIFF",
-    "payload":{
-      "repo":repo,
-      "ref":ref,
-      "commit":commit,
-      "diff_facts":diff_facts
-    }
-  }
-}
-
-json.dump(intent,open("intent.json","w"),separators=(",",":"))
-EOF
-
-          python3 build_intent.py
+          python3 -c 'import json,re,os; repo=os.environ.get("REPO",""); ref=os.environ.get("REF",""); commit=os.environ.get("COMMIT",""); data=open("diff.patch","r",encoding="utf-8",errors="replace").read().splitlines(); diff=[]; path=None; line=None; h=re.compile(r"^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@"); 
+for s in data:
+  if s.startswith("+++ b/"): path=s[6:].strip(); line=None; continue
+  m=h.match(s)
+  if m: line=int(m.group(1)); continue
+  if path and line is not None and s.startswith("+") and not s.startswith("+++"): diff.append({"path":path,"line":line,"added":s[1:]}); line+=1
+intent={"intent":{"action_type":"GIT_COMMIT_DIFF","payload":{"repo":repo,"ref":ref,"commit":commit,"diff_facts":diff}}}; 
+json.dump(intent,open("intent.json","w",encoding="utf-8"),ensure_ascii=False,separators=(",",":"))'
 
           echo "DIFF_FACTS_COUNT=$(jq '.intent.payload.diff_facts | length' intent.json)"
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Call Authority
+      - name: Call Authority (hard fail on DENY)
         env:
           AUTHORITY_URL: http://107.172.34.21:8787
         run: |
@@ -90,9 +54,9 @@ EOF
             --data-binary @intent.json > response.json
 
           decision="$(jq -r '.signed_record.decision' response.json)"
-
           echo "DECISION=$decision"
 
           if [ "$decision" = "DENY" ]; then
+            echo "Blocked by Authority"
             exit 1
           fi
