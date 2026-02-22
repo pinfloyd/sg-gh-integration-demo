@@ -42,7 +42,7 @@ jobs:
 
           cat response.json
 
-          decision=$(jq -r '.decision' response.json)
+          decision=$(jq -r '.signed_record.decision' response.json)
 
           if [ "$decision" = "DENY" ]; then
             echo "Blocked by Authority"
