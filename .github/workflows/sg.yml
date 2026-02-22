@@ -10,39 +10,115 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Prepare Intent
+      - name: Build Intent (real added-lines diff-only)
+        env:
+          AUTHORITY_URL: http://107.172.34.21:8787
+          REPO: ${{ github.repository }}
+          REF: ${{ github.ref }}
+          COMMIT: ${{ github.sha }}
+          BEFORE: ${{ github.event.before }}
         run: |
-          echo '{
-            "intent": {
-              "action_type": "GIT_COMMIT_DIFF",
-              "payload": {
-                "repo": "${{ github.repository }}",
-                "ref": "${{ github.ref }}",
-                "commit": "${{ github.sha }}",
-                "diff_facts": [
-                  {
-                    "path": "README.md",
-                    "line": 1,
-                    "added": "OPENAI_SECRET_KEY=abc"
-                  }
-                ]
-              }
-            }
-          }' > intent.json
+          set -euo pipefail
+
+          # Determine BASE commit for diff
+          BASE="$BEFORE"
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            # empty tree for first push/new branch
+            BASE="$(git hash-object -t tree /dev/null)"
+          fi
+
+          # Build diff with zero context: only changed lines appear
+          git diff --unified=0 "$BASE" "$COMMIT" > diff.patch
+
+          # Convert diff.patch -> diff_facts JSON (added lines only), robust escaping via python
+          python3 - <<'PY'
+import json, re, os, sys
+
+repo   = os.environ.get("REPO","")
+ref    = os.environ.get("REF","")
+commit = os.environ.get("COMMIT","")
+
+diff_path = "diff.patch"
+data = open(diff_path, "r", encoding="utf-8", errors="replace").read().splitlines()
+
+diff_facts = []
+cur_path = None
+cur_line = None
+
+hunk_re = re.compile(r"^\@\@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? \@\@")
+
+for line in data:
+    if line.startswith("+++ b/"):
+        cur_path = line[6:].strip()
+        cur_line = None
+        continue
+    m = hunk_re.match(line)
+    if m:
+        cur_line = int(m.group(1))
+        continue
+    # Skip diff metadata
+    if line.startswith("diff --git ") or line.startswith("--- ") or line.startswith("index ") or line.startswith("new file mode") or line.startswith("deleted file mode"):
+        continue
+    if cur_path is None or cur_line is None:
+        continue
+    # Only added lines, excluding the +++ header already handled
+    if line.startswith("+") and not line.startswith("+++"):
+        added = line[1:]
+        diff_facts.append({"path": cur_path, "line": cur_line, "added": added})
+        cur_line += 1
+        continue
+    # Context lines (should not appear with unified=0, but handle defensively)
+    if line.startswith(" "):
+        cur_line += 1
+        continue
+    # Removed lines do not increment new-file line
+    if line.startswith("-") and not line.startswith("---"):
+        continue
+
+intent = {
+  "intent": {
+    "action_type": "GIT_COMMIT_DIFF",
+    "payload": {
+      "repo": repo,
+      "ref": ref,
+      "commit": commit,
+      "diff_facts": diff_facts
+    }
+  }
+}
+
+with open("intent.json", "w", encoding="utf-8") as f:
+    json.dump(intent, f, ensure_ascii=False, separators=(",",":"))
+PY
+
+          # Do not print intent.json (may contain sensitive added lines). Only show counts.
+          echo "DIFF_FACTS_COUNT=$(python3 -c 'import json; print(len(json.load(open("intent.json"))["intent"]["payload"]["diff_facts"]))')"
 
       - name: Install jq
         run: sudo apt-get update && sudo apt-get install -y jq
 
-      - name: Call Authority
+      - name: Call Authority (hard fail on DENY)
+        env:
+          AUTHORITY_URL: http://107.172.34.21:8787
         run: |
-          curl -s -X POST http://107.172.34.21:8787/admit \
+          set -euo pipefail
+
+          curl -sS -X POST "$AUTHORITY_URL/admit" \
             -H "Content-Type: application/json" \
             --data-binary @intent.json > response.json
 
-          cat response.json
+          decision="$(jq -r '.signed_record.decision' response.json)"
+          decision_hash="$(jq -r '.signed_record.decision_hash' response.json)"
+          record_hash="$(jq -r '.signed_record.record_hash' response.json)"
+          seq="$(jq -r '.signed_record.seq' response.json)"
 
-          decision=$(jq -r '.signed_record.decision' response.json)
+          echo "DECISION=$decision"
+          echo "SEQ=$seq"
+          echo "DECISION_HASH=$decision_hash"
+          echo "RECORD_HASH=$record_hash"
 
           if [ "$decision" = "DENY" ]; then
             echo "Blocked by Authority"

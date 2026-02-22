@@ -8,7 +8,7 @@ AUTHORITY_URL: http://107.172.34.21:8787
 
 ## What this is
 
-A GitHub Actions workflow calls an external Authority endpoint (/admit). The Authority returns a signed admission record. If decision = DENY, the workflow fails (hard block).
+A GitHub Actions workflow computes **diff-only (added lines only)** from the push range and calls an external Authority endpoint (/admit). The Authority returns a signed admission record. If decision = DENY, the workflow fails (hard block).
 
 ## What this is NOT
 
@@ -16,19 +16,15 @@ No SaaS. No telemetry. No support promises. No multi-tenant.
 
 ---
 
-# 0) Prerequisites (server)
-
-On the Authority host (Ubuntu):
+# 0) Prerequisites (Authority host)
 
 - Docker installed and running
 - TCP 8787 reachable from GitHub Actions runners
-- SSH access for administration (key-based)
+- SSH administration via key-based access
 
 ---
 
-# 1) Quick connectivity check (from any machine)
-
-Run:
+# 1) Quick connectivity check
 
 curl -sS http://107.172.34.21:8787/pubkey
 
@@ -36,61 +32,40 @@ Expected: HTTP 200 and JSON containing public_key_sha256.
 
 ---
 
-# 2) GitHub Actions integration (copy/paste)
+# 2) GitHub Actions integration (real diff-only)
 
-This repo already contains `.github/workflows/sg.yml` configured to call:
+This repo contains `.github/workflows/sg.yml` which:
 
-http://107.172.34.21:8787/admit
+1) checks out repo with full history (`fetch-depth: 0`)  
+2) computes `git diff --unified=0 ${{ github.event.before }} ${{ github.sha }}`  
+3) extracts **added lines only** into `diff_facts[]`:
+   - path
+   - line (new-file line number)
+   - added (exact added line text)
+4) POSTs intent to:
+   http://107.172.34.21:8787/admit
+5) reads `.signed_record.decision`
+6) exits 1 on DENY (hard fail)
 
-Enforcement logic:
-
-- parses `.signed_record.decision`
-- exits 1 on DENY (job FAIL)
-
----
-
-# 3) Validate enforcement (1 push)
-
-Edit README.md (any change) and push to main.
-
-Expected:
-
-- Authority responds with decision=DENY (for the test payload)
-- GitHub Actions job fails
+NOTE: the workflow does not print raw diff_facts (to avoid leaking sensitive content into CI logs).
 
 ---
 
-# 4) Production wiring (replace test payload)
+# 3) Validate enforcement
 
-Replace the static diff_facts payload with real diff-only facts from your scanner/engine (added lines only). Keep:
+Push a commit that adds a secret-like string. Expected:
 
-- POST /admit
-- evaluate `.signed_record.decision`
-- hard fail on DENY
-
----
-
-# 5) Offline verification (optional, Enterprise)
-
-Use the published verifier and proof export to validate:
-
-- pubkey_sha256
-- signature (ed25519)
-- decision_hash
-- record_hash
-- prev_hash chain
-- ledger consistency
-
-(Verifier/proof packaging is anchored separately as Deploy Kit v0.1.)
+- Authority returns DENY
+- GitHub Actions job FAILS
 
 ---
 
 # Troubleshooting
 
 ## Connection timeout/refused
-- Ensure port 8787 is open in UFW/security group
+- Ensure port 8787 is reachable from the internet
 - Ensure service listens on 0.0.0.0:8787 (not only 127.0.0.1)
 
 ## Job succeeds while decision=DENY
-- Ensure jq path is `.signed_record.decision`
+- Ensure jq reads `.signed_record.decision`
 - Ensure `exit 1` is executed on DENY
