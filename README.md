@@ -5,3 +5,4 @@ Demo repository for Secrets-Guard Enterprise Runtime (v0.1): GitHub Actions hard
 Install / runbook:
 - docs/INSTALL_5MIN.md
 Minor harmless change for ALLOW test.harmless change
+just documentation text
